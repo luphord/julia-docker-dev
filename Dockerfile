@@ -1,8 +1,8 @@
 FROM julia:1.5
 
-RUN julia -e 'using Pkg; Pkg.REPLMode.pkgstr("add IJulia     ;precompile");using IJulia'
-RUN julia -e 'using Pkg; Pkg.REPLMode.pkgstr("add Conda     ;precompile");using Conda'
-RUN julia -e 'using Conda; Conda.add("jupyterlab")'
+RUN julia -e 'using Pkg; Pkg.REPLMode.pkgstr("add IJulia     ;precompile");using IJulia' \
+    && julia -e 'using Pkg; Pkg.REPLMode.pkgstr("add Conda     ;precompile");using Conda' \
+    && julia -e 'using Conda; Conda.add("jupyterlab")'
 
 EXPOSE 8889
 
