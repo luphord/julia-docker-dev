@@ -1,9 +1,8 @@
-FROM julia:1.5
+FROM codercom/code-server:3.10.2
 
-RUN julia -e 'using Pkg; Pkg.REPLMode.pkgstr("add IJulia     ;precompile");using IJulia' \
-    && julia -e 'using Pkg; Pkg.REPLMode.pkgstr("add Conda     ;precompile");using Conda' \
-    && julia -e 'using Conda; Conda.add("jupyterlab")'
+RUN sudo apt update && sudo apt install -y wget gnupg python3-pip
+RUN python3 -m pip install --user -U jill
+RUN python3 -m jill install --confirm --install_dir ~/julia 1.6.1
+RUN sudo ln -s ~/julia/julia-1.6/bin/julia /usr/local/bin/julia
 
-EXPOSE 8889
-
-CMD ["/root/.julia/conda/3/bin/jupyter", "lab", "--allow-root", "--ip=0.0.0.0", "--port=8889"]
+EXPOSE 8080
