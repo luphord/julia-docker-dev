@@ -8,4 +8,6 @@ RUN sudo ln -s ~/julia/julia-1.6/bin/julia /usr/local/bin/julia
 ENV SERVICE_URL=https://open-vsx.org/vscode/gallery
 ENV ITEM_URL=https://open-vsx.org/vscode/item
 
+RUN code-server --install-extension julialang.language-julia
+
 EXPOSE 8080
