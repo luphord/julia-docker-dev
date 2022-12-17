@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.7.1
+FROM codercom/code-server:4.9.1
 
 RUN sudo apt update && sudo apt install -y wget gnupg python3-pip
 RUN python3 -m pip install --user -U jill
